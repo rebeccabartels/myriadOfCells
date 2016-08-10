@@ -22,7 +22,6 @@ class TableViewController: UITableViewController {
             myArray.append(numberInt)
         }
         print(myArray)
-    
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,32 +53,32 @@ class TableViewController: UITableViewController {
     }
  
  
-
+// override when you want to do something different.
+//the ui element is not set until the view loads. 
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 
-        var destination = segue.destinationViewController as! ViewController
+        let destination = segue.destinationViewController as! ViewController  //destination is an instance of the viewcontroller class. So now we can use properties of our destination viewcontroller to set properties (for vc class) that will be used in our next view controller.
 
-        var senderCell = sender as! UITableViewCell
-        var indexPath = tableView.indexPathForSelectedRow
+        let senderCell = sender as! UITableViewCell
         
-        var whatIsYourText = senderCell.textLabel?.text
+//        var indexPath = tableView.indexPathForSelectedRow   didn't need this line why?
+        
+        let whatIsYourText = senderCell.textLabel?.text
         
         var unwrappedText = ""
         
         if whatIsYourText != nil {
-            print("im not nil")
-            unwrappedText = whatIsYourText!   //QUESTION HOW DO I NOT DO THIS? 
-            print(unwrappedText)
-            destination.text = unwrappedText  // the segue.destinationViewController is a method, the variable destination is going to be where we're going when we tapp thing so we casted as ViewController so it knows which specific ViewController we have. Then we unwrapped it so that we could transfer the text. 
             
+            print("im not nil")
+            
+            unwrappedText = whatIsYourText!   //QUESTION HOW DO I NOT DO THIS? 
+            
+            print(unwrappedText)
+            
+            destination.text = unwrappedText  // the segue.destinationViewController is a method, the variable destination is going to be where we're going when we tapp thing so we casted as ViewController (a custom class) so it knows which specific ViewController we have. Then we unwrapped it so that we could transfer the text.
         }
-        
-        
-        
 
-        
-        
 
     }
  
